@@ -17,7 +17,7 @@ export class ClassService {
     return this.classRepository.findById(id);
   }
 
-  async getClassesByTeacher(teacherId: string): Promise<Class[]> {
+  async getClassesByTeacher(teacherId: string) {
     return this.classRepository.findByTeacherId(teacherId);
   }
 

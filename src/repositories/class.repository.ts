@@ -26,7 +26,7 @@ export class ClassRepository {
     });
   }
 
-  async findByTeacherId(teacherId: string): Promise<Class[]> {
+  async findByTeacherId(teacherId: string) {
     return prisma.class.findMany({
       where: { teacherId },
       include: {

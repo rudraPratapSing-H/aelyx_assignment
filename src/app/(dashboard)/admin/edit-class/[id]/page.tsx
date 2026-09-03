@@ -118,7 +118,7 @@ export default function EditClassPage() {
 
             <div className="grid gap-2">
               <Label htmlFor="teacher">Teacher In-Charge *</Label>
-              <Select value={formData.teacherId} onValueChange={handleTeacherChange} required>
+              <Select value={formData.teacherId || ''} onValueChange={(val: any) => handleTeacherChange(val)} required>
                 <SelectTrigger>
                   <SelectValue placeholder="Select a teacher">
                     {formData.teacherId && teachers.length > 0 

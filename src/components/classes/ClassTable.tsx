@@ -171,7 +171,7 @@ export function ClassTable({ classes, teachers }: ClassTableProps) {
               </div>
               <div className="grid gap-2">
                 <Label>Assigned Teacher</Label>
-                <Select value={editForm.teacherId} onValueChange={(val) => setEditForm({...editForm, teacherId: val})}>
+                <Select value={editForm.teacherId || ''} onValueChange={(val: any) => setEditForm({...editForm, teacherId: val})} required>
                   <SelectTrigger>
                     <SelectValue placeholder="Select a teacher" />
                   </SelectTrigger>

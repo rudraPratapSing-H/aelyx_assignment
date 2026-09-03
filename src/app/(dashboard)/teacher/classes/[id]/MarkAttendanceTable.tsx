@@ -127,7 +127,7 @@ export function MarkAttendanceTable({ classId, className, students }: MarkAttend
                   <TableCell>
                     <Select 
                       value={attendance[student.id] || 'ABSENT'} 
-                      onValueChange={(val: 'PRESENT' | 'ABSENT' | 'LATE') => handleStatusChange(student.id, val)}
+                      onValueChange={(val: any) => handleStatusChange(student.id, val)}
                     >
                       <SelectTrigger className="w-[140px]">
                         <SelectValue />

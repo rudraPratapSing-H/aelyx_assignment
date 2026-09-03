@@ -87,7 +87,7 @@ export function AddUserButton() {
 
               <div className="grid gap-2">
                 <Label>Role</Label>
-                <Select value={form.role} onValueChange={(val) => setForm({...form, role: val})}>
+                <Select value={form.role || ''} onValueChange={(val: any) => setForm({...form, role: val})}>
                   <SelectTrigger>
                     <SelectValue placeholder="Select role" />
                   </SelectTrigger>

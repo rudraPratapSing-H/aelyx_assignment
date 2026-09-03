@@ -128,7 +128,7 @@ export default function AddStudentPage() {
 
             <div className="grid gap-2">
               <Label htmlFor="class">Assign Class</Label>
-              <Select value={formData.classId} onValueChange={handleClassChange}>
+              <Select value={formData.classId || ''} onValueChange={(val: any) => handleClassChange(val)}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select a class">
                     {formData.classId && formData.classId !== 'unassigned' && classes.length > 0 

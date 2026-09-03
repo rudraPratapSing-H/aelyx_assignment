@@ -206,7 +206,7 @@ export function UserTable({ users }: UserTableProps) {
               
               <div className="grid gap-2">
                 <Label>Role</Label>
-                <Select value={editForm.role} onValueChange={(val) => setEditForm({...editForm, role: val})}>
+                <Select value={editForm.role || ''} onValueChange={(val: any) => setEditForm({...editForm, role: val})}>
                   <SelectTrigger>
                     <SelectValue placeholder="Select role" />
                   </SelectTrigger>

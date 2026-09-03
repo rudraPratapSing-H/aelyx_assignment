@@ -92,7 +92,7 @@ export function AddStudentButton({ classes }: AddStudentButtonProps) {
 
               <div className="grid gap-2">
                 <Label>Assign Class</Label>
-                <Select value={form.classId} onValueChange={(val) => setForm({...form, classId: val})} required>
+                <Select value={form.classId || ''} onValueChange={(val: any) => setForm({...form, classId: val})} required>
                   <SelectTrigger>
                     <SelectValue placeholder="Select a class" />
                   </SelectTrigger>
