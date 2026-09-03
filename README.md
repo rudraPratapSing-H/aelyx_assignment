@@ -23,8 +23,8 @@ Every technology choice was made with a **strict 24-hour deadline** in mind, opt
 
 ```mermaid
 erDiagram
-    USER ||--o{ CLASS : "is in-charge of"
-    CLASS ||--o{ STUDENT : "contains"
+    USER ||--o{ SCHOOL_CLASS : "is in-charge of"
+    SCHOOL_CLASS ||--o{ STUDENT : "contains"
     STUDENT ||--o{ ATTENDANCE : "has daily records of"
 
     USER {
@@ -33,7 +33,7 @@ erDiagram
         string email
         string role
     }
-    CLASS {
+    SCHOOL_CLASS {
         string id PK
         string name
         string teacherId FK
