@@ -2,6 +2,8 @@
 
 > A full-stack, role-based School ERP built as a 24-hour take-home assignment for **Aelyx AI & Technology Solutions**.
 
+**🌐 Live Demo:** [https://aelyx-assignment-q5l4.vercel.app/](https://aelyx-assignment-q5l4.vercel.app/)
+
 The system manages three distinct user roles — **Admin**, **Teacher**, and **Student** — each with their own dashboard, permissions, and workflows. Admins manage all entities (staff, students, classes). Teachers mark daily attendance for their assigned classes. Students view their own attendance history and statistics.
 
 ---
