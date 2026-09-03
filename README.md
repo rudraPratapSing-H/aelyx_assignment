@@ -146,7 +146,6 @@ To deliver core end-to-end functionality within the 24-hour constraint, the foll
 In a production environment, the following enhancements would be prioritized:
 
 - **Robust Pagination** for all data tables (cursor-based with Prisma).
-- **Student/Parent Read-Only Portal** for guardians to monitor attendance remotely.
 - **CSV Export** functionality for attendance sheets and student rosters.
 - **Dual Token Auth** with refresh token rotation and token revocation.
 - **Audit Logging** for all admin CRUD operations.
