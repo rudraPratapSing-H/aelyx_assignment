@@ -16,6 +16,7 @@ enum Role {
 enum AttendanceStatus {
   PRESENT
   ABSENT
+  LATE
 }
 
 model User {
