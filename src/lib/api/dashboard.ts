@@ -6,8 +6,8 @@ const dashboardService = new DashboardService();
 
 // Define strict return types for our Server Components
 export type DashboardUser = Omit<User, 'passwordHash'>;
-export type DashboardStudent = Omit<Student, 'passwordHash'> & { class?: Class };
-export type DashboardAttendance = Attendance & { student?: DashboardStudent };
+export type DashboardStudent = Omit<Student, 'passwordHash'> & { class?: Class | null };
+export type DashboardAttendance = Attendance & { student?: DashboardStudent | null };
 export type DashboardClass = Class & {
   teacher?: { id: string; name: string; email: string };
   students?: any[];

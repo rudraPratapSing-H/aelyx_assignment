@@ -21,11 +21,35 @@ Every technology choice was made with a **strict 24-hour deadline** in mind, opt
 
 ## 🗄️ Database Schema
 
-```
-User (Admin/Teacher)
- └── Class (1:N — a teacher is in-charge of classes)
-      └── Student (1:N — students belong to a class)
-           └── Attendance (1:N — daily attendance records per student)
+```mermaid
+erDiagram
+    USER ||--o{ CLASS : "is in-charge of"
+    CLASS ||--o{ STUDENT : "contains"
+    STUDENT ||--o{ ATTENDANCE : "has daily records of"
+
+    USER {
+        string id PK
+        string name
+        string email
+        string role
+    }
+    CLASS {
+        string id PK
+        string name
+        string teacherId FK
+    }
+    STUDENT {
+        string id PK
+        string name
+        string rollNumber
+        string classId FK
+    }
+    ATTENDANCE {
+        string id PK
+        string date
+        string status
+        string studentId FK
+    }
 ```
 
 The schema enforces a `@@unique([studentId, date])` constraint on Attendance to prevent duplicate records for the same student on the same day.
@@ -127,6 +151,46 @@ src/
 ├── repositories/           # Database access (Prisma)
 ├── middleware/              # Auth & role-based guards
 └── lib/                    # Utilities & server-side data fetchers
+```
+
+### Visual Architecture
+
+```mermaid
+graph LR
+    src[📂 src/] --> app[📂 app/]
+    src --> comp[📂 components/]
+    src --> ctrl[📂 controllers/]
+    src --> serv[📂 services/]
+    src --> repo[📂 repositories/]
+    src --> mid[📂 middleware/]
+    src --> lib[📂 lib/]
+
+    %% App Router Directory
+    app --> dash[📂 dash/]
+    app --> api[📂 api/]
+    app --> login[📂 login/]
+
+    dash --> admin[📄 admin/]
+    dash --> teacher[📄 teacher/]
+    dash --> student[📄 student/]
+    dash --> students[📄 students/]
+    dash --> users[📄 users/]
+    dash --> classes[📄 classes/]
+    dash --> attendance[📄 attendance/]
+
+    %% Components Directory
+    comp --> ui[🎨 ui/]
+    comp --> layout[🎨 layout/]
+    comp --> auth[🎨 auth/]
+    comp --> c_students[🎨 students/]
+    comp --> c_users[🎨 users/]
+    comp --> c_classes[🎨 classes/]
+    comp --> c_attendance[🎨 attendance/]
+
+    %% Styling
+    style src fill:#2d3436,stroke:#b2bec3,stroke-width:2px,color:#fff
+    style app fill:#0984e3,stroke:#74b9ff,stroke-width:2px,color:#fff
+    style comp fill:#00b894,stroke:#55efc4,stroke-width:2px,color:#fff
 ```
 
 ---
