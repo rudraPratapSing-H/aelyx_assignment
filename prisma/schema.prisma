@@ -1,0 +1,80 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum Role {
+  ADMIN
+  TEACHER
+}
+
+enum AttendanceStatus {
+  PRESENT
+  ABSENT
+}
+
+model User {
+  id           String  @id @default(cuid())
+  name         String
+  email        String  @unique
+  passwordHash String
+  phone        String?
+  role         Role
+  subject      String?
+
+  // A teacher can be in-charge of classes
+  classes Class[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Class {
+  id        String @id @default(cuid())
+  name      String // e.g. "Grade 6 - A"
+
+  // Teacher acting as in-charge
+  teacherId String
+  teacher   User   @relation(fields: [teacherId], references: [id])
+
+  students Student[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Student {
+  id              String @id @default(cuid())
+  name            String
+  email           String @unique
+  passwordHash    String
+  rollNumber      String @unique
+  guardianContact String
+
+  classId String?
+  class   Class?  @relation(fields: [classId], references: [id])
+
+  attendances Attendance[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Attendance {
+  id     String           @id @default(cuid())
+  date   DateTime
+  status AttendanceStatus
+
+  studentId String
+  student   Student @relation(fields: [studentId], references: [id])
+
+  createdAt DateTime @default(now())
+
+  // Prevent duplicate attendance for same student on same day
+  @@unique([studentId, date])
+}
