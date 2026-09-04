@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { toast } from 'sonner';
+import { Loader2 } from 'lucide-react';
 
 export function LoginForm() {
   const router = useRouter();
@@ -100,7 +101,14 @@ export function LoginForm() {
         </CardContent>
         <CardFooter className="flex-col gap-4">
           <Button className="w-full" type="submit" disabled={loading}>
-            {loading ? 'Signing in...' : 'Sign in'}
+            {loading ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Signing in...
+              </>
+            ) : (
+              'Sign in'
+            )}
           </Button>
           <div className="w-full rounded-md bg-muted p-3 text-xs">
             <p className="mb-2 font-semibold text-foreground">Demo Accounts (Click to fill):</p>
