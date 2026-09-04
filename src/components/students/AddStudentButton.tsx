@@ -94,7 +94,9 @@ export function AddStudentButton({ classes }: AddStudentButtonProps) {
                 <Label>Assign Class</Label>
                 <Select value={form.classId || ''} onValueChange={(val: any) => setForm({...form, classId: val})} required>
                   <SelectTrigger>
-                    <SelectValue placeholder="Select a class" />
+                    <SelectValue placeholder="Select a class">
+                      {form.classId ? (classes.find(c => c.id === form.classId)?.name ?? 'Select a class') : 'Select a class'}
+                    </SelectValue>
                   </SelectTrigger>
                   <SelectContent>
                     {classes.map(cls => (

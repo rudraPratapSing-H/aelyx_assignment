@@ -206,7 +206,9 @@ export function StudentTable({ students, classes }: StudentTableProps) {
                 <Label>Assign Class</Label>
                 <Select value={editForm.classId || ''} onValueChange={(val: any) => setEditForm({...editForm, classId: val})} required>
                   <SelectTrigger>
-                    <SelectValue placeholder="Select a class" />
+                    <SelectValue placeholder="Select a class">
+                      {editForm.classId ? (classes.find(c => c.id === editForm.classId)?.name ?? 'Select a class') : 'Select a class'}
+                    </SelectValue>
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="">Unassigned</SelectItem>

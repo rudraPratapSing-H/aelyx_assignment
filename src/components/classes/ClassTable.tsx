@@ -173,7 +173,9 @@ export function ClassTable({ classes, teachers }: ClassTableProps) {
                 <Label>Assigned Teacher</Label>
                 <Select value={editForm.teacherId || ''} onValueChange={(val: any) => setEditForm({...editForm, teacherId: val})} required>
                   <SelectTrigger>
-                    <SelectValue placeholder="Select a teacher" />
+                    <SelectValue placeholder="Select a teacher">
+                      {editForm.teacherId ? (teachers.find(t => t.id === editForm.teacherId)?.name ?? 'Select a teacher') : 'Select a teacher'}
+                    </SelectValue>
                   </SelectTrigger>
                   <SelectContent>
                     {teachers.map(teacher => (

@@ -81,7 +81,9 @@ export function AddClassButton({ teachers }: AddClassButtonProps) {
                 <Label>Assigned Teacher</Label>
                 <Select value={form.teacherId || ''} onValueChange={(val: any) => setForm({...form, teacherId: val})} required>
                   <SelectTrigger>
-                    <SelectValue placeholder="Select a teacher" />
+                    <SelectValue placeholder="Select a teacher">
+                      {form.teacherId ? (teachers.find(t => t.id === form.teacherId)?.name ?? 'Select a teacher') : 'Select a teacher'}
+                    </SelectValue>
                   </SelectTrigger>
                   <SelectContent>
                     {teachers.map(teacher => (
