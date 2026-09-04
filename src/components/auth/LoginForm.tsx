@@ -98,10 +98,36 @@ export function LoginForm() {
             />
           </div>
         </CardContent>
-        <CardFooter>
+        <CardFooter className="flex-col gap-4">
           <Button className="w-full" type="submit" disabled={loading}>
             {loading ? 'Signing in...' : 'Sign in'}
           </Button>
+          <div className="w-full rounded-md bg-muted p-3 text-xs">
+            <p className="mb-2 font-semibold text-foreground">Demo Accounts (Click to fill):</p>
+            <ul className="space-y-1.5 text-muted-foreground">
+              <li 
+                className="flex justify-between cursor-pointer hover:text-foreground transition-colors"
+                onClick={() => { setEmail('hr@aelyx.ai'); setPassword('123'); }}
+              >
+                <span className="font-medium">Admin</span>
+                <span>hr@aelyx.ai / 123</span>
+              </li>
+              <li 
+                className="flex justify-between cursor-pointer hover:text-foreground transition-colors"
+                onClick={() => { setEmail('teacher3@gmail.com'); setPassword('123'); }}
+              >
+                <span className="font-medium">Teacher</span>
+                <span>teacher3@gmail.com / 123</span>
+              </li>
+              <li 
+                className="flex justify-between cursor-pointer hover:text-foreground transition-colors"
+                onClick={() => { setEmail('vaibhav@gmail.com'); setPassword('123'); }}
+              >
+                <span className="font-medium">Student</span>
+                <span>vaibhav@gmail.com / 123</span>
+              </li>
+            </ul>
+          </div>
         </CardFooter>
       </form>
     </Card>
